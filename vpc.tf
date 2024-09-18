@@ -10,9 +10,11 @@ variable "region" {
 }
 
 provider "google" {
-  project = var.project_id
-  region  = var.region
+  credentials = file("${path.module}/credentials.json")
+  project     = var.project_id
+  region      = var.region
 }
+
 
 # VPC
 resource "google_compute_network" "vpc" {
