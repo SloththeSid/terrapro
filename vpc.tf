@@ -3,25 +3,25 @@
 
 variable "project_id" {
   description = "Project ID"
-  default     = "teratask-436014"  # Add your project ID as default
+  default     = "teratask-436014"  # Your project ID
 }
 
 variable "region" {
   description = "Region"
-  default     = "asia-south1"  # Add your region as default
+  default     = "asia-south1"  # Your region
 }
 
 provider "google" {
   project     = var.project_id
   region      = var.region
+  # Remove the line below if it exists
+  # credentials = file("${path.module}/credentials.json")
 }
-
-
 
 # VPC
 resource "google_compute_network" "vpc" {
   name                    = "${var.project_id}-vpc"
-  auto_create_subnetworks  = false  # No need for quotes around false
+  auto_create_subnetworks = false  # No need for quotes around false
 }
 
 # Subnet
