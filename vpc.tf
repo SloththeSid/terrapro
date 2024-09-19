@@ -11,11 +11,17 @@ variable "region" {
   default     = "asia-south1"  # Add your region as default
 }
 
+variable "credentials" {
+  description = "The JSON credentials for Google Cloud"
+  type        = string
+}
+
 provider "google" {
-  credentials = file("${path.module}/credentials.json")
+  credentials = var.credentials
   project     = var.project_id
   region      = var.region
 }
+
 
 
 # VPC
